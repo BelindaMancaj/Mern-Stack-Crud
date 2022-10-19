@@ -1,0 +1,8 @@
+.all-books-container{
+  display: grid;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+//   grid-template-rows: 1fr 1fr 1fr; 
+  gap: 35px 0px;
+  margin-top: 50px;
+}
