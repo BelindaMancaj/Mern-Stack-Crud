@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 .all-books-container{
   display: grid;
   justify-items: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-//   grid-template-rows: 1fr 1fr 1fr; 
-  gap: 35px 0px;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 35px 40px;
   margin-top: 50px;
+  justify-content: space-between;
+  align-content: space-between;
+  width:100%; 
+}
+ .add-book{
+  display: flex;
+  margin:  auto;
+  width: 400px;
+  // padding: 15px;
+  padding-left: 135px;
+  border: 2px solid #6C0BA9;
+  border-radius: 6px;
+  font-family: 'Roboto';
+  font-size: 18px;
 }

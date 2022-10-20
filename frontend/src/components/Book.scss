@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+@mixin action-buttons{
+    width: 120px;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    &:hover{
+     background-color: white;
+    }
+}
+
+
+.book{
+    background-color: #BEAFC2;
+    width: 100%;
+    margin: 5px;
+    border-radius: 6px;;
+    .book-info{
+        // width: 150px;
+        font-family: 'Roboto';
+        font-size: 15px;
+        padding: 10px 30px;
+    }
+    //Bej mixins per butonat !!!!!!!!!!!
+    .actions{
+        display: flex;
+        justify-content: space-around;
+        padding: 20px 0px;
+    .edit{
+        @include action-buttons;
+    }
+    .delete{
+        @include action-buttons;
+    }}
+}
