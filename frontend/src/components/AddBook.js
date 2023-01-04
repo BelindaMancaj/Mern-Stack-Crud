@@ -1,21 +1,49 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Input, InputNumber } from "antd";
+import Axios from "axios";
 import "./AddBook.scss";
+import { useDispatch } from "react-redux";
+import { createBook } from "../actions/books";
 
 const AddBook = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [form] = Form.useForm();
+  const [newBook, setNewBook] = useState({
+    title: "",
+    author: "",
+    genre: "",
+    pages: "",
+    price: "",
+  });
+
+  const dispatch = useDispatch();
+
   const showModal = () => {
     setIsModalOpen(true);
   };
 
   const handleCancel = () => {
+    form.resetFields();
     setIsModalOpen(false);
   };
-  const onFinish = (values) => {
-    console.log("Success:", values);
+
+  const postData = async (val) => {
+    Axios.post("http://localhost:8000/api/addBook", val)
+      .then((res) => console.log("Data send"))
+      .catch((err) => console.log(err.data));
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+
+  const onFinish = (values) => {
+    // e.preventDefault();
+    dispatch(createBook(values));
+
+    // postData(values);
+    // form.resetFields();
+  };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(createBook(newBook));
+    setIsModalOpen(false);
   };
 
   return (
@@ -29,17 +57,24 @@ const AddBook = () => {
         onCancel={handleCancel}
         footer={[
           <Button onClick={handleCancel}>Cancel</Button>,
-          <Button key="3" type="primary" htmlType="submit">
+          <Button
+            type="primary"
+            form="myForm"
+            key="submit"
+            htmlType="submit"
+            onClick={onSubmit}
+          >
             Add
           </Button>,
         ]}
       >
         <Form
           name="basic"
+          form={form}
+          id="myForm"
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
+          // onFinish={onFinish}
           autoComplete="off"
         >
           <Form.Item
@@ -51,8 +86,13 @@ const AddBook = () => {
               },
             ]}
           >
-            <Input />
+            <Input
+              onChange={(e) =>
+                setNewBook({ ...newBook, title: e.target.value })
+              }
+            />
           </Form.Item>
+
           <Form.Item
             label="Author"
             name="author"
@@ -62,7 +102,11 @@ const AddBook = () => {
               },
             ]}
           >
-            <Input />
+            <Input
+              onChange={(e) =>
+                setNewBook({ ...newBook, author: e.target.value })
+              }
+            />
           </Form.Item>
           <Form.Item
             label="Genre"
@@ -73,29 +117,43 @@ const AddBook = () => {
               },
             ]}
           >
-            <Input />
+            <Input
+              onChange={(e) =>
+                setNewBook({ ...newBook, genre: e.target.value })
+              }
+            />
           </Form.Item>
           <Form.Item
             label="Pages"
             name="pages"
-            rules={[
-              {
-                message: "Please input the pages number!",
-              },
-            ]}
+            // rules={[
+            //   {
+            //     type: "number",
+            //     min: 0,
+            //   },
+            // ]}
           >
-            <InputNumber />
+            <Input
+              onChange={(e) =>
+                setNewBook({ ...newBook, pages: e.target.value })
+              }
+            />
           </Form.Item>
           <Form.Item
             label="Price"
             name="price"
             rules={[
               {
-                message: "Please input the price!",
+                type: "number",
+                min: 0,
               },
             ]}
           >
-            <InputNumber />
+            <Input
+              onChange={(e) =>
+                setNewBook({ ...newBook, price: e.target.value })
+              }
+            />
           </Form.Item>
         </Form>
       </Modal>

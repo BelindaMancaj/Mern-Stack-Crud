@@ -1,117 +1,121 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import "./Books.scss";
 import Axios from "axios";
 
 const Books = () => {
-  // const [books, setBooks] = useState([]);
-  const books = [
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-    {
-      title: "sfd",
-      author: "sdsf",
-      genre: "oooo",
-      pages: 23,
-      price: 555,
-    },
-  ];
+  const [books, setBooks] = useState([]);
+  // const books = [
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  //   {
+  //     title: "sfd",
+  //     author: "sdsf",
+  //     genre: "oooo",
+  //     pages: 23,
+  //     price: 555,
+  //   },
+  // ];
 
+  const myBooks = useSelector((state) => state.books);
+  console.log("My books", myBooks);
+  // console.log("My Books", myBooks);
   // useEffect(() => {
   //   Axios.get("http://localhost:8000/api/getBooks").then((response) => {
   //     setBooks(response.data);
@@ -120,7 +124,7 @@ const Books = () => {
   // console.log(books);
   return (
     <div className="all-container">
-      {books.map((book) => {
+      {myBooks.map((book) => {
         return (
           <div className="book-container">
             <div className="title">{book.title}</div>
