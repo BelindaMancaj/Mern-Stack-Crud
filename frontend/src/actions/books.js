@@ -31,3 +31,12 @@ export const createBook = (book) => async (dispatch) => {
     console.log(error.message);
   }
 };
+export const updateBook = (id, book) => async (dispatch) => {
+  try {
+    const { data } = await api.updateBook(id, book);
+
+    dispatch({ type: "UPDATE", payload: data });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

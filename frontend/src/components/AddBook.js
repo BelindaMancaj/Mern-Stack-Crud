@@ -27,19 +27,6 @@ const AddBook = () => {
     setIsModalOpen(false);
   };
 
-  const postData = async (val) => {
-    Axios.post("http://localhost:8000/api/addBook", val)
-      .then((res) => console.log("Data send"))
-      .catch((err) => console.log(err.data));
-  };
-
-  const onFinish = (values) => {
-    // e.preventDefault();
-    dispatch(createBook(values));
-
-    // postData(values);
-    // form.resetFields();
-  };
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(createBook(newBook));
