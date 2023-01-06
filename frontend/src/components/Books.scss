@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+
+//Refactor, create mixins and functions for buttons and other repeated code
+
+.all-container{
+    width:90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 40px 5%;
+    text-align: center;
+    column-gap: 60px;
+    row-gap: 40px;
+
+    
+}
+
+.book-container{
+    background-color: beige;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 35px; 
+
+    .title{
+        font-size: 26px;
+        font-weight: 500;
+    }
+    .author{
+        font-size: 22px;
+        font-weight: 400;
+    }
+    .title{
+        font-size: 26px;
+        font-weight: 500;
+    }
+ 
+    .actions{
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        .edit-btn{
+            width: 120px;
+            padding: 4px 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgb(72, 72, 228);
+            color:white;
+            &:hover{
+                background-color: rgb(35, 35, 171);
+            }
+        }
+
+        .delete-btn{
+            width: 120px;
+            padding: 4px 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: rgb(225, 49, 49);
+            color:white;
+
+            &:hover{
+                background-color:rgb(162, 34, 8);
+            }
+        }
+    }
+
+    
+}
+
+.footer{
+    position:fixed;
+    bottom:0;
+    right:0;
+    height: 80px;
+    width: 100%;
+    background-color: rgb(64, 65, 65);
+    opacity: 0.95;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }

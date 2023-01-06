@@ -1,30 +1,25 @@
-import { useEffect } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
-import BooksContainer from './components/BooksContainer';
-import {getBooks} from './actions'
-
+import "./App.scss";
+import AddBook from "./components/AddBook";
+import Books from "./components/Books";
+import { getBooks } from "./actions/books";
 
 function App() {
-
   const dispatch = useDispatch();
-
-  const books = useSelector((state) => state.books);
 
   useEffect(() => {
     dispatch(getBooks());
-  },[dispatch])
+  }, [dispatch]);
 
   return (
-    <>
-     <BrowserRouter>
-     <Routes>
-      <Route path="/" element={<BooksContainer/>} />
-      <Route path="books" element={<BooksContainer/>} />
-     </Routes>
-     </BrowserRouter>
-    </>
+    <div className="App">
+      <Books />
+      <div className="footer">
+        <AddBook />
+      </div>
+    </div>
   );
 }
 

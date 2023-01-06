@@ -1,5 +1,7 @@
-// import axios from "axios";
+import Axios from "axios";
 
-// const url = "http://localhost:5000/books";
-
-// export const fetchBooks = () => axios.get(url)
+export const fetchBooks = () => Axios.get("http://localhost:8000/api/getBooks");
+export const createBook = (newBook) =>
+  Axios.post("http://localhost:8000/api/addBook", newBook);
+export const updateBook = (id, updatedBook) =>
+  Axios.patch(`http://localhost:8000/api/${id}`, updatedBook);
